@@ -17,12 +17,13 @@ class subforwardlist
 
 		~subforwardlist<type>()
 		{
-			auto* temp = first;
-			if(first != NULL)
+			while (first->next != NULL)
 			{
-				clear(first->next);
-				delete first;
+				auto* temp = first->next;
+				delete first->next;
+				first = temp;
 			}
+			delete first;
 		}
 
 		void clear(subforwardlist<type> *s)
